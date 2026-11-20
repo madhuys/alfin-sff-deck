@@ -7,7 +7,7 @@ html,body{margin:0;height:100%;background:#08090B;overflow:hidden;font-family:Ar
 #frame{position:relative;width:min(100vw,calc(100vh*16/9));aspect-ratio:16/9}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none}
 .slide.on{opacity:1;pointer-events:auto}
-.slide img,.slide video{width:100%;height:100%;display:block;object-fit:contain;background:#08090B}
+.slide img,.slide > video{width:100%;height:100%;display:block;object-fit:contain;background:#08090B}
 a.hot{position:absolute;display:block}
 #bar{position:fixed;bottom:10px;right:16px;color:#8E959F;font-size:12px;letter-spacing:.15em;opacity:.6}
 #hint{position:fixed;bottom:10px;left:16px;color:#8E959F;font-size:12px;opacity:.6;transition:opacity 1s}
@@ -16,13 +16,14 @@ a.hot{position:absolute;display:block}
 <div id="hint">→ / ← or click to change slides · F for full screen</div>
 <div id="bar"></div>
 <script>
-const N=11, frame=document.getElementById('frame'), slides=[];
+const N=12, frame=document.getElementById('frame'), slides=[];
 for(let i=1;i<=N;i++){
   const d=document.createElement('div'); d.className='slide';
-  if(i===2){ d.innerHTML='<video src="clip.mp4" muted playsinline preload="auto" poster="slides/2.jpg"></video>'; }
+  if(i===2){ d.innerHTML='<video src="clip.mp4" playsinline preload="auto" poster="slides/2.jpg"></video>'; }
   else d.innerHTML='<img src="slides/'+i+'.jpg" alt="Slide '+i+'">';
-  if(i===10){ const a=document.createElement('a'); a.className='hot'; a.href='https://gftn.co/alfin/prove-before-you-deploy'; a.target='_blank';
+  if(i===11){ const a=document.createElement('a'); a.className='hot'; a.href='https://gftn.co/alfin/prove-before-you-deploy'; a.target='_blank';
     Object.assign(a.style,{left:'6%',top:'63.2%',width:'88%',height:'11.7%'}); a.onclick=e=>e.stopPropagation(); d.appendChild(a); }
+  if(i===12){ d.insertAdjacentHTML('beforeend','<video class="robot" src="robot.mp4" muted loop autoplay playsinline style="position:absolute;left:79.92%;top:30.8%;width:14.17%;height:46.27%;object-fit:cover"></video>'); }
   frame.appendChild(d); slides.push(d);
 }
 let cur=Math.min(N,Math.max(1,parseInt(location.hash.slice(1))||1));
