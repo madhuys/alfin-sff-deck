@@ -19,7 +19,7 @@ a.hot{position:absolute;display:block}
 const N=12, frame=document.getElementById('frame'), slides=[];
 for(let i=1;i<=N;i++){
   const d=document.createElement('div'); d.className='slide';
-  if(i===2){ d.innerHTML='<video src="meet-kevin.mp4?v=c1" controls playsinline preload="auto" poster="slides/2.jpg"></video><button id="snd" style="display:none;position:absolute;right:2%;top:3%;padding:10px 18px;border:0;border-radius:24px;background:#BEF014;color:#08090B;font:600 16px Arial;cursor:pointer">🔊 Tap for sound</button>'; }
+  if(i===2){ d.innerHTML='<video src="meet-kevin.mp4?v=d1" controls playsinline preload="auto" poster="slides/2.jpg"></video><button id="snd" style="display:none;position:absolute;right:2%;top:3%;padding:10px 18px;border:0;border-radius:24px;background:#BEF014;color:#08090B;font:600 16px Arial;cursor:pointer">🔊 Tap for sound</button>'; }
   else d.innerHTML='<img src="slides/'+i+'.jpg?v=7b" alt="Slide '+i+'">';
   if(i===11){ const a=document.createElement('a'); a.className='hot'; a.href='https://gftn.co/alfin/prove-before-you-deploy'; a.target='_blank';
     Object.assign(a.style,{left:'6%',top:'63.2%',width:'88%',height:'11.7%'}); a.onclick=e=>e.stopPropagation(); d.appendChild(a); }
